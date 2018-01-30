@@ -14,7 +14,7 @@
 
 #####################################################
 # preamble# FOLDUP
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Steven E. Pav, shabbychef@gmail.com
 USER root
 # UNFOLD
@@ -24,7 +24,8 @@ RUN (rm -rf /var/lib/apt/lists/* ; \
  apt-get update -y -qq; \
  apt-get update --fix-missing ; \
  DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true apt-get install -y --no-install-recommends -q \
-   build-essential git libboost-program-options-dev zlib1g-dev ; \
+   build-essential git libboost-program-options-dev zlib1g-dev default-jdk ; \
+ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 ; \ 
  mkdir -p /tmp/build ; \
  cd /tmp/build ; \
  git clone git://github.com/JohnLangford/vowpal_wabbit.git ; \
